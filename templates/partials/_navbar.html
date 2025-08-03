@@ -1,0 +1,63 @@
+{% load static %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href={% url "pages:index" %}>
+      <img src={% static "/img/logo.png" %} class="logo" alt="Logo" />
+    </a>
+    
+    <!-- Custom Hamburger Button -->
+    <button 
+      class="navbar-toggler custom-toggler" 
+      type="button" 
+      id="navbarToggler"
+      aria-label="Toggle navigation"
+      aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <!-- Fallback Bootstrap icon -->
+      <span class="navbar-toggler-icon d-none"></span>
+    </button>
+    
+    <!-- Navigation Menu -->
+    <div class="navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav w-100">
+        <li {% if request.path == '/' %} class="nav-item active mr-3" {% else %}
+        class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href={% url "pages:index" %}>主頁</a>
+        </li>
+        <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %}
+        class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href={% url "addinvoice:create_invoice" %}>新單</a>
+        </li>
+        <li {% if 'statement' in request.path %} class="nav-item active mr-3" {% else %}
+        class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href={% url "statement:dashboard" %}>報表</a>
+        </li>
+        <li {% if 'processpay' in request.path %} class="nav-item active mr-3" {% else %}
+        class="nav-item mr-3" {% endif %}>
+           <a class="nav-link" href={% url "processpay:pending_payments" %}>付款處理</a>
+        </li>
+        
+        {% if user.is_authenticated %}
+        <li class="nav-item ml-auto">
+           <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+               <i class="fas fa-sign-out-alt"></i> Logout
+           </a>
+           <form action="{% url 'pages:logout' %}" method="POST" id="logout">
+               {% csrf_token %}
+               <input type="hidden">
+           </form>
+        </li>
+        {% else %}
+        <li class="nav-item ml-auto {% if 'login' in request.path %}active{% endif %}">
+          <a class="nav-link" href="{% url 'pages:index' %}">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
