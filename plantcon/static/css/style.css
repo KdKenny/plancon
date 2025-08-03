@@ -83,6 +83,13 @@ img {
 .navbar-collapse.show {
   display: block; }
 
+/* 響應式設定：大螢幕時隱藏漢堡按鈕 */
+@media (min-width: 992px) {
+  .navbar-expand-lg .custom-toggler {
+    display: none !important;
+  }
+}
+
 /* Mobile Menu Styles */
 @media (max-width: 991.98px) {
   .navbar-collapse {

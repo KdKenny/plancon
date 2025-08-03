@@ -11,6 +11,9 @@
       class="navbar-toggler custom-toggler" 
       type="button" 
       id="navbarToggler"
+      data-toggle="collapse"
+      data-target="#navbarMenu"
+      aria-controls="navbarMenu"
       aria-label="Toggle navigation"
       aria-expanded="false">
       <span class="hamburger-line"></span>
@@ -21,7 +24,7 @@
     </button>
     
     <!-- Navigation Menu -->
-    <div class="navbar-collapse" id="navbarMenu">
+    <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav w-100">
         <li {% if request.path == '/' %} class="nav-item active mr-3" {% else %}
         class="nav-item mr-3" {% endif %}>
