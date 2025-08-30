@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SITE_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['172.17.248.112', 'alibabacloud.com', 'localhost']
+ALLOWED_HOSTS = ['172.19.35.73', 'alibabacloud.com', 'localhost']
 
 
 # Application definition
